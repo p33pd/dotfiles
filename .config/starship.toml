@@ -1,0 +1,74 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "catppuccin_frappe"
+
+format = """
+[░▒▓](teal)\
+[ 󰉋 ](bg:teal fg:base)\
+$directory\
+[](fg:surface1) \
+$git_branch\
+$git_status\
+$git_commit\
+$fill\
+$cmd_duration\
+$line_break\
+$character"""
+
+
+[cmd_duration]
+style = "bg:surface1 fg:text"
+format = "[](lavender)[󱎫 ](bg:lavender fg:base)[ $duration ]($style)[▓▒░](surface1)"
+
+[directory]
+style = "fg:text bg:surface1"
+format = "[ $path]($style)"
+
+[fill]
+symbol = ' '
+
+[git_branch]
+symbol = "󰘬"
+style = "bg:flamingo fg:base"
+format = "[](flamingo)[$symbol ]($style)[ $branch ](fg:subtext1 bg:surface1)[](surface1) "
+
+[git_status]
+style = "bg:peach fg:base"
+format = '([](peach)[ ](bg:peach fg:base)[$all_status$ahead_behind]($style)[](peach) )'
+
+[git_commit]
+style = "bg:surface1 fg:text"
+format = '[](green)[󰜘 ](bg:green fg:base)[ $hash]($style)[](surface1)([ ](yellow)[󰓹 ](bg:yellow fg:base)[ $tag]($style)[](surface1)) ' 
+tag_disabled = false
+tag_symbol = ''
+
+
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
+
