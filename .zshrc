@@ -53,6 +53,12 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
+# Enable history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # Setup history search
 zinit load 'zsh-users/zsh-history-substring-search'
 zinit ice wait atload'_history_substring_search_config'
