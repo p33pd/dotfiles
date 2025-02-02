@@ -1,0 +1,14 @@
+{
+    "workbench.sideBar.location": "right",
+    "telemetry.telemetryLevel": "off",
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "editor.minimap.enabled": false,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "editor.lineHeight": 1.6,
+    "gopls": {
+        "ui.semanticTokens": true
+    },
+    "files.trimTrailingWhitespace": true
+}
