@@ -34,8 +34,8 @@ style = "bg:flamingo fg:base"
 format = "[](flamingo)[$symbol ]($style)[ $branch ](fg:subtext1 bg:surface1)[](surface1) "
 
 [git_status]
-style = "bg:peach fg:base"
-format = '([](peach)[ ](bg:peach fg:base)[$all_status$ahead_behind]($style)[](peach) )'
+style = "bg:surface1 fg:subtext1"
+format = '([](peach)[ ](bg:peach fg:base)[ $all_status$ahead_behind]($style)[](surface1) )'
 
 [git_commit]
 style = "bg:surface1 fg:text"
