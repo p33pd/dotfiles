@@ -31,6 +31,12 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
+zinit wait"1" lucid from"gh-r" as"null" for \
+  sbin"**/bat"  @sharkdp/bat \
+  sbin"**/eza"  eza-community/eza
+
+zinit pack for fzf
+
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -39,7 +45,8 @@ zinit light Aloxaf/fzf-tab
 # Add oh-my-zsh plugins
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
-zinit snippet OMZP::podman
+zinit snippet OMZP::docker
+zinit snipper OMZP::docker-compose
 
 ## Configure omz eza plugin
 zstyle ':omz:plugin:eza' 'icons' yes
@@ -74,18 +81,8 @@ setopt HIST_IGNORE_ALL_DUPS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
 
-# Load fzf
-source <(fzf --zsh)
-
 # Aliases
 alias myip="curl https://myip.dnsomatic.com; echo"
 alias vim=nvim
 alias vi=nvim
 
-# Path
-## bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-## composer
-export PATH="$HOME/.composer/vendor/bin:$PATH"
