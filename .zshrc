@@ -31,11 +31,15 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
+# Install mordern cli tools
 zinit wait"1" lucid from"gh-r" as"null" for \
   sbin"**/bat"  @sharkdp/bat \
-  sbin"**/eza"  eza-community/eza
-
-zinit pack for fzf
+  sbin"**/eza"  eza-community/eza \
+  sbin"**/rg" BurntSushi/ripgrep \
+  sbin"**/xh" ducaale/xh \
+  sbin"**/fd" sharkdp/fd \
+  sbin"**/tspin" bensadeh/tailspin \
+  sbin"**/fzf" junegunn/fzf
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -46,7 +50,7 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::docker
-zinit snipper OMZP::docker-compose
+zinit snippet OMZP::docker-compose
 
 ## Configure omz eza plugin
 zstyle ':omz:plugin:eza' 'icons' yes
@@ -85,4 +89,3 @@ zstyle ':completion:*' menu no
 alias myip="curl https://myip.dnsomatic.com; echo"
 alias vim=nvim
 alias vi=nvim
-
