@@ -32,12 +32,12 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 
 # Install mordern cli tools
-zinit wait"1" lucid from"gh-r" as"null" for \
-  sbin"**/bat"  @sharkdp/bat \
-  sbin"**/eza"  eza-community/eza \
+zinit wait"1" lucid from"gh-r" as"program" for \
+  sbin"**/bat" @sharkdp/bat \
+  sbin"**/fd" @sharkdp/fd \
+  sbin"**/eza" eza-community/eza \
   sbin"**/rg" BurntSushi/ripgrep \
   sbin"**/xh" ducaale/xh \
-  sbin"**/fd" sharkdp/fd \
   sbin"**/tspin" bensadeh/tailspin \
   sbin"**/fzf" junegunn/fzf
 
