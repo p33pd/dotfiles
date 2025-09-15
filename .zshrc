@@ -39,7 +39,12 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/rg" BurntSushi/ripgrep \
   sbin"**/xh" ducaale/xh \
   sbin"**/tspin" bensadeh/tailspin \
-  sbin"**/fzf" junegunn/fzf
+  sbin"**/fzf" junegunn/fzf \
+  sbin"**/jq" @jqlang/jq \
+  sbin"**/zoxide" @ajeetdsouza/zoxide \
+  sbin"**/dust" @bootandy/dust \
+  sbin"**/duf" @muesli/duf \
+  sbin"**/difft" Wilfred/difftastic
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -56,8 +61,19 @@ zinit snippet OMZP::docker-compose
 zstyle ':omz:plugin:eza' 'icons' yes
 zinit snippet OMZP::eza
 
-# bun completions
+# Shell integrations
+
+## fzf
+source <(fzf --zsh)
+
+## bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+## zoxide completions
+eval "$(zoxide init zsh)"
+
+## brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -73,8 +89,8 @@ setopt appendhistory
 # Setup history search
 zinit load 'zsh-users/zsh-history-substring-search'
 zinit ice wait atload'_history_substring_search_config'
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=
@@ -89,3 +105,9 @@ zstyle ':completion:*' menu no
 alias myip="curl https://myip.dnsomatic.com; echo"
 alias vim=nvim
 alias vi=nvim
+alias jq=jq-linux-amd64
+alias lt="eza --tree"
+alias cat=bat
+
+export LANG=en_IN.UTF-8
+export LC_ALL=en_IN.UTF-8
