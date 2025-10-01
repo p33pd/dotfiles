@@ -1,6 +1,9 @@
+background-opacity = 0.95
+
 command = /usr/bin/zsh
 
 font-family = "JetBrains Mono"
+font-size = 10
 
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 

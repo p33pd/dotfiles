@@ -33,18 +33,19 @@ zinit light starship/starship
 
 # Install mordern cli tools
 zinit wait"1" lucid from"gh-r" as"program" for \
-  sbin"**/bat" @sharkdp/bat \
+  atclone"bat --completion zsh > _bat" sbin"**/bat" @sharkdp/bat \
   sbin"**/fd" @sharkdp/fd \
   sbin"**/eza" eza-community/eza \
   sbin"**/rg" BurntSushi/ripgrep \
   sbin"**/xh" ducaale/xh \
-  sbin"**/tspin" bensadeh/tailspin \
   sbin"**/fzf" junegunn/fzf \
-  sbin"**/jq" @jqlang/jq \
+  sbin"**/tspin" bensadeh/tailspin \
   sbin"**/zoxide" @ajeetdsouza/zoxide \
   sbin"**/dust" @bootandy/dust \
   sbin"**/duf" @muesli/duf \
-  sbin"**/difft" Wilfred/difftastic
+  sbin"**/difft" Wilfred/difftastic \
+  sbin"**/procs" dalance/procs \
+  mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -103,9 +104,8 @@ zstyle ':completion:*' menu no
 
 # Aliases
 alias myip="curl https://myip.dnsomatic.com; echo"
-alias vim=nvim
-alias vi=nvim
-alias jq=jq-linux-amd64
+alias vim="flatpak run io.neovim.nvim"
+alias vi="flatpak run io.neovim.nvim"
 alias lt="eza --tree"
 alias cat=bat
 
