@@ -44,7 +44,7 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/dust" @bootandy/dust \
   sbin"**/duf" @muesli/duf \
   sbin"**/difft" Wilfred/difftastic \
-  sbin"**/procs" dalance/procs \
+  atclone"procs --gen-completion-out zsh > _procs" sbin"**/procs" dalance/procs \
   mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq
 
 # Add zsh plugins
@@ -58,8 +58,12 @@ zinit snippet OMZP::git
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 
+# Load completions
+zinit ice as"completion"
+zinit snippet https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza
+
 ## Configure omz eza plugin
-zstyle ':omz:plugin:eza' 'icons' yes
+zstyle ':omz:plugins:eza' 'icons' yes
 zinit snippet OMZP::eza
 
 # Shell integrations
@@ -104,10 +108,22 @@ zstyle ':completion:*' menu no
 
 # Aliases
 alias myip="curl https://myip.dnsomatic.com; echo"
-alias vim="flatpak run io.neovim.nvim"
-alias vi="flatpak run io.neovim.nvim"
-alias lt="eza --tree"
+alias lt="eza --tree --git-ignore"
+alias lta="lt -a"
 alias cat=bat
+
+## flatpak Neovim wrapper
+nvim() {
+    if [ -z "$1" ]; then
+        flatpak run io.neovim.nvim
+    else
+        flatpak run io.neovim.nvim "$@"
+    fi
+}
+
+alias vim="nvim"
+alias vi="nvim"
+
 
 export LANG=en_IN.UTF-8
 export LC_ALL=en_IN.UTF-8
