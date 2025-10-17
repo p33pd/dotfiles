@@ -36,7 +36,7 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   atclone"bat --completion zsh > _bat" sbin"**/bat" @sharkdp/bat \
   sbin"**/fd" @sharkdp/fd \
   sbin"**/eza" eza-community/eza \
-  sbin"**/rg" BurntSushi/ripgrep \
+  atclone"rg --generate complete-zsh > _rg" sbin"**/rg" BurntSushi/ripgrep \
   sbin"**/xh" ducaale/xh \
   sbin"**/fzf" junegunn/fzf \
   sbin"**/tspin" bensadeh/tailspin \
@@ -45,7 +45,8 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/duf" @muesli/duf \
   sbin"**/difft" Wilfred/difftastic \
   atclone"procs --gen-completion-out zsh > _procs" sbin"**/procs" dalance/procs \
-  mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq
+  mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq \
+  sbin"**/lazydocker" @jesseduffield/lazydocker
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -76,9 +77,6 @@ source <(fzf --zsh)
 
 ## zoxide completions
 eval "$(zoxide init zsh)"
-
-## brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -124,6 +122,15 @@ nvim() {
 alias vim="nvim"
 alias vi="nvim"
 
-
 export LANG=en_IN.UTF-8
 export LC_ALL=en_IN.UTF-8
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
