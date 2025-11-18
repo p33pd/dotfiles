@@ -46,7 +46,9 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/difft" Wilfred/difftastic \
   atclone"procs --gen-completion-out zsh > _procs" sbin"**/procs" dalance/procs \
   mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq \
-  sbin"**/lazydocker" @jesseduffield/lazydocker
+  sbin"**/lazydocker" @jesseduffield/lazydocker \
+  sbin"**/dive" @wagoodman/dive \
+  sbin"**/btop" @aristocratos/btop
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -134,3 +136,5 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+
+. "$HOME/.cargo/env"
