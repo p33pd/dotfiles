@@ -33,10 +33,7 @@ zinit light starship/starship
 
 # Install mordern cli tools
 zinit wait"1" lucid from"gh-r" as"program" for \
-  atclone"bat --completion zsh > _bat" sbin"**/bat" @sharkdp/bat \
   sbin"**/fd" @sharkdp/fd \
-  sbin"**/eza" eza-community/eza \
-  atclone"rg --generate complete-zsh > _rg" sbin"**/rg" BurntSushi/ripgrep \
   sbin"**/xh" ducaale/xh \
   sbin"**/fzf" junegunn/fzf \
   sbin"**/tspin" bensadeh/tailspin \
@@ -44,16 +41,36 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/dust" @bootandy/dust \
   sbin"**/duf" @muesli/duf \
   sbin"**/difft" Wilfred/difftastic \
-  atclone"procs --gen-completion-out zsh > _procs" sbin"**/procs" dalance/procs \
   mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq \
   sbin"**/lazydocker" @jesseduffield/lazydocker \
   sbin"**/dive" @wagoodman/dive \
   sbin"**/btop" @aristocratos/btop
 
+zinit ice as"command" from"gh-r" \
+        pick"**/bat" \
+        mv"bat*/autocomplete/bat.zsh -> _bat"
+zinit light sharkdp/bat
+
+zinit ice as"command" from"gh-r" \
+        pick"**/eza"
+zinit light eza-community/eza
+
+zinit ice as"command" from"gh-r" \
+        pick"**/rg"
+zinit light BurntSushi/ripgrep
+
+zinit ice as"command" from"gh-r" \
+        pick"**/procs" \
+        atclone"procs --gen-completion-out zsh > _procs"
+zinit light dalance/procs
+
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
+
+## Productivity
+zinit light MichaelAquilina/zsh-you-should-use
 
 # Add oh-my-zsh plugins
 zinit snippet OMZL::git.zsh
@@ -103,8 +120,9 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
 # Completion styling
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Aliases
 alias myip="curl https://myip.dnsomatic.com; echo"
@@ -124,8 +142,8 @@ nvim() {
 alias vim="nvim"
 alias vi="nvim"
 
-export LANG=en_IN.UTF-8
-export LC_ALL=en_IN.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
