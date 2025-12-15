@@ -84,6 +84,8 @@ zinit snippet https://raw.githubusercontent.com/eza-community/eza/main/completio
 
 ## Configure omz eza plugin
 zstyle ':omz:plugins:eza' 'icons' yes
+zstyle ':omz:plugins:eza' 'dirs-first' yes
+zstyle ':omz:plugins:eza' 'git-status' yes
 zinit snippet OMZP::eza
 
 # Shell integrations
@@ -141,6 +143,15 @@ nvim() {
 
 alias vim="nvim"
 alias vi="nvim"
+
+# Laravel Sail alias
+function sail() {
+    if [ -f ./vendor/bin/sail ]; then
+        ./vendor/bin/sail "$@"
+    else
+        echo "Sail is not available. Make sure you are in a Laravel project with Sail installed."
+    fi
+}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
