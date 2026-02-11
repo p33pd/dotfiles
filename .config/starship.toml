@@ -11,6 +11,10 @@ $directory\
 $git_branch\
 $git_status\
 $git_commit\
+$python\
+$nodejs\
+$bun\
+$php\
 $fill\
 $cmd_duration\
 $line_break\
@@ -18,11 +22,11 @@ $character"""
 
 
 [cmd_duration]
-style = "bg:surface1 fg:text"
+style = "bg:surface1 fg:subtext1"
 format = "[](mauve)[󱎫 ](bg:mauve fg:base)[ $duration ]($style)[▓▒░](surface1)"
 
 [directory]
-style = "fg:text bg:surface1"
+style = "fg:subtext1 bg:surface1"
 format = "[ $path ]($style)"
 
 [fill]
@@ -38,10 +42,29 @@ style = "bg:surface1 fg:subtext1"
 format = '([](peach)[ ](bg:peach fg:base)[ $all_status$ahead_behind]($style)[](surface1) )'
 
 [git_commit]
-style = "bg:surface1 fg:text"
+style = "bg:surface1 fg:subtext1"
 format = '[](green)[󰜘 ](bg:green fg:base)[ $hash ]($style)[](surface1)([ ](yellow)[󰓹 ](bg:yellow fg:base)[ $tag ]($style)[](surface1)) '
 tag_disabled = false
 tag_symbol = ''
+
+[python]
+symbol = "󰌠"
+style = "bg:surface1 fg:subtext1"
+format = '[](yellow)[$symbol ](bg:yellow fg:base)[ $version( \($virtualenv\)) ]($style)[](surface1) '
+
+[nodejs]
+symbol = "󰎙"
+style = "bg:surface1 fg:subtext1"
+format = '[](teal)[$symbol ](bg:teal fg:base)[ $version ]($style)[](surface1) '
+
+[bun]
+style = "bg:surface1 fg:subtext1"
+format = '[](pink)[ ](bg:pink fg:base)[ $version ]($style)[](surface1) '
+
+[php]
+symbol = "󰌟"
+style = "bg:surface1 fg:subtext1"
+format = '[](sapphire)[$symbol ](bg:sapphire fg:base)[ $version ]($style)[](surface1) '
 
 
 [palettes.catppuccin_frappe]

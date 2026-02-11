@@ -41,7 +41,6 @@ zinit wait"1" lucid from"gh-r" as"program" for \
   sbin"**/dust" @bootandy/dust \
   sbin"**/duf" @muesli/duf \
   sbin"**/difft" Wilfred/difftastic \
-  mv"jq-linux-amd64 -> jq" sbin"**/jq" @jqlang/jq \
   sbin"**/lazydocker" @jesseduffield/lazydocker \
   sbin"**/dive" @wagoodman/dive \
   sbin"**/btop" @aristocratos/btop
@@ -164,6 +163,9 @@ export NVM_DIR="$HOME/.nvm"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# composer
+export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 
 
 . "$HOME/.cargo/env"
