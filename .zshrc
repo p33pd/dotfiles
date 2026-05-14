@@ -85,6 +85,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Aliases
 alias myip="curl https://myip.dnsomatic.com; echo"
+alias localip='ip route show default | awk "{ print \$9 }"'
 alias lt="eza --tree --git-ignore"
 alias lta="lt -a"
 alias cat=bat
