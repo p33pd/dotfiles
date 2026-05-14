@@ -22,46 +22,12 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-# Load starship theme
-# line 1: `starship` binary as command, from github release
-# line 2: starship setup at clone(create init.zsh, completion)
-# line 3: pull behavior same as clone, source init.zsh
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
-
 # Install mordern cli tools
 zinit wait"1" lucid from"gh-r" as"program" for \
-  sbin"**/fd" @sharkdp/fd \
   sbin"**/xh" ducaale/xh \
-  sbin"**/fzf" junegunn/fzf \
   sbin"**/tspin" bensadeh/tailspin \
-  sbin"**/zoxide" @ajeetdsouza/zoxide \
-  sbin"**/dust" @bootandy/dust \
-  sbin"**/duf" @muesli/duf \
-  sbin"**/difft" Wilfred/difftastic \
   sbin"**/lazydocker" @jesseduffield/lazydocker \
   sbin"**/dive" @wagoodman/dive \
-  sbin"**/btop" @aristocratos/btop
-
-zinit ice as"command" from"gh-r" \
-        pick"**/bat" \
-        mv"bat*/autocomplete/bat.zsh -> _bat"
-zinit light sharkdp/bat
-
-zinit ice as"command" from"gh-r" \
-        pick"**/eza"
-zinit light eza-community/eza
-
-zinit ice as"command" from"gh-r" \
-        pick"**/rg"
-zinit light BurntSushi/ripgrep
-
-zinit ice as"command" from"gh-r" \
-        pick"**/procs" \
-        atclone"procs --gen-completion-out zsh > _procs"
-zinit light dalance/procs
 
 # Add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -77,10 +43,6 @@ zinit snippet OMZP::git
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 
-# Load completions
-zinit ice as"completion"
-zinit snippet https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza
-
 ## Configure omz eza plugin
 zstyle ':omz:plugins:eza' 'icons' yes
 zstyle ':omz:plugins:eza' 'dirs-first' yes
@@ -88,15 +50,11 @@ zstyle ':omz:plugins:eza' 'git-status' yes
 zinit snippet OMZP::eza
 
 # Shell integrations
-
-## fzf
-source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 ## bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-## zoxide completions
-eval "$(zoxide init zsh)"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -112,8 +70,8 @@ setopt appendhistory
 # Setup history search
 zinit load 'zsh-users/zsh-history-substring-search'
 zinit ice wait atload'_history_substring_search_config'
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=
@@ -130,18 +88,11 @@ alias myip="curl https://myip.dnsomatic.com; echo"
 alias lt="eza --tree --git-ignore"
 alias lta="lt -a"
 alias cat=bat
-
-## flatpak Neovim wrapper
-nvim() {
-    if [ -z "$1" ]; then
-        flatpak run io.neovim.nvim
-    else
-        flatpak run io.neovim.nvim "$@"
-    fi
-}
-
 alias vim="nvim"
 alias vi="nvim"
+alias grep="rg"
+alias du="dust"
+alias df="duf"
 
 # Laravel Sail alias
 function sail() {
@@ -151,9 +102,6 @@ function sail() {
         echo "Sail is not available. Make sure you are in a Laravel project with Sail installed."
     fi
 }
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -166,6 +114,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # composer
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
-
-
-. "$HOME/.cargo/env"
