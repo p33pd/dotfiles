@@ -24,9 +24,7 @@ zinit light-mode for \
 
 # Install mordern cli tools
 zinit wait"1" lucid from"gh-r" as"program" for \
-  sbin"**/xh" ducaale/xh \
   sbin"**/tspin" bensadeh/tailspin \
-  sbin"**/lazydocker" @jesseduffield/lazydocker \
   sbin"**/dive" @wagoodman/dive \
 
 # Add zsh plugins
@@ -48,6 +46,10 @@ zstyle ':omz:plugins:eza' 'icons' yes
 zstyle ':omz:plugins:eza' 'dirs-first' yes
 zstyle ':omz:plugins:eza' 'git-status' yes
 zinit snippet OMZP::eza
+
+## Load docker completions
+zinit ice as:completion
+zinit snippet ~/.docker/completions/_docker
 
 # Shell integrations
 eval "$(starship init zsh)"
