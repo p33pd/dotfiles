@@ -5,5 +5,12 @@ command = /usr/bin/zsh
 font-family = "JetBrains Mono"
 font-size = 10
 
+keybind = ctrl+shift+i=goto_split:top
+keybind = ctrl+shift+k=goto_split:bottom
+keybind = ctrl+shift+j=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+[=goto_split:previous
+keybind = ctrl+shift+]=goto_split:next
+
 theme = Catppuccin Mocha
 
